@@ -1,0 +1,44 @@
+.main-container{
+    margin-top: 5px;
+    background-color: red;
+}
+
+.navbar .navbar-expand .navbar-dark .bg-dark{
+    position: sticky;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+  }
+
+  .card-img-top{
+    width: 260px;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+ 
+.col .img-thumbnail {
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    max-width: 160px;
+    height: 140px;
+}
+
+#image-column{
+    background-color:aqua;
+    width: 34px;
+
+}
+.item-description{
+   
+    align-items: left;
+}
+
+body{
+    background-color: royalblue;
+  }

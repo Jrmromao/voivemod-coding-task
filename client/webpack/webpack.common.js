@@ -16,17 +16,17 @@ module.exports = {
             loader: 'babel-loader',
           },
         ],
-      },
+      }, 
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|mp3)$/i,
         type: 'asset/resource',
       },
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        test: /\.(woff(2)?|eot|ttf|otf|svg|mp3|)$/,
         type: 'asset/inline',
       },
     ],
