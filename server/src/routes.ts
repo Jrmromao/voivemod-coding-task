@@ -14,5 +14,11 @@ router.put("/api/sounds/:id/play",async  (req, res) => {
   return await soundController.handlePlaySound(req.params.id.split(':')[1], res)
 });
 
+router.get("/api/sound/:id",async  (req, res) => {
+  console.log(req.params.id);
+  
+  return await soundController.handleGetSingleSound(req.params.id, res)
+});
+
 
 export { router };

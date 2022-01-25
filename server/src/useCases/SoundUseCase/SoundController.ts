@@ -37,12 +37,13 @@ export class SoundController {
     response: Response
   ): Promise<Response> {
     try {
-      const sound = await this.soundUseCase.execureGetSounds();
 
+      const sound = await this.soundUseCase.execureGetSingleSound(soundId);
+      console.log(sound);
       if (sound) return response.status(201).send(sound);
     } catch (err) {
       return response.status(400).json({
-        message: err.message || "[GetSounds]: Unexpected error.",
+        message: err.message || "[GetSingleSound]: Unexpected error.",
       });
     }
   }
@@ -55,7 +56,7 @@ export class SoundController {
       return response.status(201).send();
     } catch (err) {
       return response.status(400).json({
-        message: err.message || "[GetSounds]: Unexpected error.",
+        message: err.message || "[Play Sound]: Unexpected error.",
       });
     }
   }

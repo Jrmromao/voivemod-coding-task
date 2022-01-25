@@ -8,7 +8,7 @@ export class SQLSoundsRepositiry implements ISoundsRepository {
 
   private sounds: Sound[] = [];
 
-  save(soundList: Sound[]): Promise<void> {
+  async save(soundList: Sound[]): Promise<void> {
     try {
       if (soundList) {
         this.sounds.length = 0;
@@ -19,12 +19,8 @@ export class SQLSoundsRepositiry implements ISoundsRepository {
       throw error;
     }
   }
-
-  play(soundId: string): Promise<void> {
+  async play(soundId: string): Promise<void> {
     try {
-
-      console.log(this.sounds);
-      
       const index = this.sounds.findIndex((s) => s.id === soundId);
       this.sounds[index].price += 0.01;
       return;
@@ -34,7 +30,9 @@ export class SQLSoundsRepositiry implements ISoundsRepository {
   }
   async findById(id: string): Promise<Sound> {
     try {
+
       const sound = this.sounds.find((sound) => sound.id === id);
+      console.log(sound);
       return sound;
     } catch (error) {
       throw error;
@@ -48,7 +46,6 @@ export class SQLSoundsRepositiry implements ISoundsRepository {
       throw error;
     }
   }
-
   async getAll(): Promise<Sound[]> {
     try {
       if (this.sounds.length > 0) return this.sounds;

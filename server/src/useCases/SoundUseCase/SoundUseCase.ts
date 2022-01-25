@@ -27,4 +27,12 @@ export class SoundUseCase {
       throw new Error("Error in retriving sounds!");
     }
   }
+
+  async execureGetSingleSound(soundId: string) {
+    try {
+      return this.soundRepository.findById(soundId);
+    } catch (error) {
+      throw new Error("Error in retriving single sound!");
+    }
+  }
 }

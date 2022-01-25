@@ -22,7 +22,8 @@ export default class PatientStore {
 
   play = async (soundId: string) => {
     try {
-      await agent.sound.play(soundId)
+      const sound = await agent.sound.play(soundId)
+      this.getAll()
     } catch (error) {
       throw error
     }
@@ -31,9 +32,6 @@ export default class PatientStore {
   getAll = async () => {
     try {
       const sounds = await agent.sound.getAll()
-
-      console.log(sounds)
-
       if (sounds) this.soundList = sounds
     } catch (error) {
       throw error || new Error('Error fetching the sounds!')

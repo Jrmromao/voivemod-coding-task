@@ -1,9 +1,10 @@
-import { uuid } from 'uuidv4'
+const { v4 } = require('uuid')
+
 import {Sound} from '../entities/Sound'
 
 export const sounds: Sound[] = [
     {
-      id: uuid(),
+      id: v4(),
       name: 'Benfica',
       icon: 'benfica.jpeg',
       price: 0,
