@@ -11,9 +11,10 @@ export default class PatientStore {
     makeAutoObservable(this)
   }
 
-  submit = async () => {
+  submitSounds = async () => {
     try {
       await agent.sound.submitSounds(sounds)
+      this.getAll()
     } catch (error) {
       throw error
     }
@@ -21,7 +22,7 @@ export default class PatientStore {
 
   play = async (soundId: string) => {
     try {
-      const sound = await agent.sound.play(soundId)
+      await agent.sound.play(soundId)
     } catch (error) {
       throw error
     }
@@ -30,10 +31,10 @@ export default class PatientStore {
   getAll = async () => {
     try {
       const sounds = await agent.sound.getAll()
-    console.log('get sonds!');
-    
-      if (sounds) 
-      this.soundList = sounds
+
+      console.log(sounds)
+
+      if (sounds) this.soundList = sounds
     } catch (error) {
       throw error || new Error('Error fetching the sounds!')
     }

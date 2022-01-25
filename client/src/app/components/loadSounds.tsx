@@ -2,18 +2,18 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useStore } from '../../stores/rootStore'
 
-const loadSounds = () => {
+const LoadSounds = () => {
   const {
-    soundStore: { submit },
+    soundStore: { submitSounds },
   } = useStore()
 
   return (
     <>
-      <Button className="btn btn-success" onClick={submit}>
-        Load the list of sounds!
+      <Button className="btn btn-success" onClick={submitSounds}>
+        Load sounds!
       </Button>
     </>
   )
 }
 
-export default loadSounds
+export default LoadSounds

@@ -17,4 +17,5 @@ export interface ISound {
   id: string
   icon: string
   name: string
+  price: number
 }

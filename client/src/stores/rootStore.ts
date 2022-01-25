@@ -1,18 +1,16 @@
-import { createContext, useContext } from "react";
-import SoundStore from "./soundStore";
-
+import { createContext, useContext } from 'react'
+import SoundStore from './soundStore'
 
 interface IStore {
-soundStore: SoundStore
+  soundStore: SoundStore
 }
 
 export const stores: IStore = {
   soundStore: new SoundStore(),
+}
 
-};
+export const StoreContext = createContext(stores)
 
-export const StoreContext = createContext(stores);
-
-export function useStore(){
-    return useContext(StoreContext)
+export function useStore() {
+  return useContext(StoreContext)
 }

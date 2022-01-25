@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap'
-import { ISoundDetailsModal } from '../models/models'
 import ReactAudioPlayer from 'react-audio-player'
 import { useStore } from '../../stores/rootStore'
 
@@ -8,17 +7,25 @@ interface IProps {
   name: string
   show: boolean
   icon: string
+  id: string
+  price: number
   onShow: (show: boolean) => void
 }
 
-const ItemModal: React.FC<IProps> = ({ show, icon, onShow, name }) => {
+const ItemModal: React.FC<IProps> = ({
+  id,
+  show,
+  icon,
+  onShow,
+  name,
+  price,
+}) => {
   //cloud service
-  const { soundStore } = useStore()
+  const {
+    soundStore: { play },
+  } = useStore()
 
-  useEffect(() => {})
-
-  // const URL = `https://res.cloudinary.com/dsi5cdwvo/video/upload/v1642883037/${props.image.name}}.mp3`
-  const URL = ` `
+  const URL = `https://res.cloudinary.com/dsi5cdwvo/video/upload/v1643050300/sounds/${name.toLowerCase()}.mp3`
 
   return (
     <div>
@@ -46,10 +53,10 @@ const ItemModal: React.FC<IProps> = ({ show, icon, onShow, name }) => {
                     <td>
                       <strong>Price</strong>:
                     </td>
-                    <td>€12.22</td>
+                    <td>€{price.toFixed(2)}</td>
                   </tr>
                 </table>
-                <ReactAudioPlayer src={URL} controls />
+                <ReactAudioPlayer src={URL} controls onPlay={() => play(id)} />
               </Col>
             </Row>
           </Container>

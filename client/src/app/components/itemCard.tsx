@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import ItemModal from './ItemModal'
 
@@ -7,21 +7,20 @@ interface IProps {
   icon: string
   name: string
   id: string
+  price: number
 }
 
-const ItemCard: React.FC<IProps> = ({ name, icon, id }) => {
+const ItemCard: React.FC<IProps> = ({ name, icon, id, price }) => {
   const [modalShow, setModalShow] = useState(false)
-
-  useEffect(() => {
-    console.log('running...')
-  }, [])
 
   return (
     <div>
       <ItemModal
-        show={modalShow}
-        icon={icon}
+        id={id}
         name={name}
+        icon={icon}
+        show={modalShow}
+        price={price}
         onShow={() => setModalShow(!modalShow)}
       />
       <Card style={{ width: '18rem' }}>

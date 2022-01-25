@@ -3,11 +3,9 @@ import { Container } from 'react-bootstrap'
 import ItemContainer from '../components/itemContainer'
 import MyNavbar from '../components/myNavbar'
 import { useStore } from '../../stores/rootStore'
-import LoadSounds from '../components/loadSounds'
-import { observer } from "mobx-react-lite";
-interface IProps {}
+import { observer } from 'mobx-react-lite'
 
-const Home: React.FC<IProps> = ({}) => {
+const Home: React.FC = () => {
   const {
     soundStore: { getAll, soundList },
   } = useStore()
@@ -21,11 +19,7 @@ const Home: React.FC<IProps> = ({}) => {
       <MyNavbar />
 
       <Container className="main-container">
-        {soundList.length > 0 ? (
-          <ItemContainer soundsList={soundList} />
-        ) : (
-          <LoadSounds />
-        )}
+        <ItemContainer soundsList={soundList} />
       </Container>
     </div>
   )

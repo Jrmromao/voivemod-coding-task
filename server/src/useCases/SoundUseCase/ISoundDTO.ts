@@ -1,5 +1,6 @@
-export interface ISoundRequestDTO{
-    name: string;
-    icon: string;
-    
+export interface ISoundRequestDTO {
+  id: string;
+  name: string;
+  icon: string;
+  price: number;
 }

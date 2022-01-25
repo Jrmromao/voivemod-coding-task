@@ -5,7 +5,7 @@ export class Sound {
   public id: string;
   public name: string;
   public icon: string;
-  public prince?: number;
+  public price: number;
  
   constructor(props: Omit<Sound, 'id'>, id?: string) {
     Object.assign(this, props);

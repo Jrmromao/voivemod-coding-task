@@ -8,12 +8,9 @@ export class SoundController {
     request: Request,
     response: Response
   ): Promise<Response> {
-    const { name, icon } = request.body;
-
-    console.log(request.body);
 
     try {
-      await this.soundUseCase.excuteSubmitSounds([]);
+      await this.soundUseCase.excuteSubmitSounds(request.body);
 
       return response.status(201).send();
     } catch (err) {
@@ -29,6 +26,33 @@ export class SoundController {
     try {
       const sounds = await this.soundUseCase.execureGetSounds();
       if (sounds.length > 0) return response.status(201).send(sounds);
+    } catch (err) {
+      return response.status(400).json({
+        message: err.message || "[GetSounds]: Unexpected error.",
+      });
+    }
+  }
+  async handleGetSingleSound(
+    soundId: string,
+    response: Response
+  ): Promise<Response> {
+    try {
+      const sound = await this.soundUseCase.execureGetSounds();
+
+      if (sound) return response.status(201).send(sound);
+    } catch (err) {
+      return response.status(400).json({
+        message: err.message || "[GetSounds]: Unexpected error.",
+      });
+    }
+  }
+  async handlePlaySound(
+    soundId: string,
+    response: Response
+  ): Promise<Response> {
+    try {
+      await this.soundUseCase.execurePlaySound(soundId);
+      return response.status(201).send();
     } catch (err) {
       return response.status(400).json({
         message: err.message || "[GetSounds]: Unexpected error.",

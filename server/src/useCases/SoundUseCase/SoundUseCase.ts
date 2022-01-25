@@ -4,30 +4,27 @@ import { ISoundRequestDTO } from "./ISoundDTO";
 import { sounds } from "../../data/database";
 
 export class SoundUseCase {
-  constructor(private soundRepository: ISoundsRepository) {
-    this.soundsList = sounds;
-  }
-
-  private soundsList: Sound[];
+  constructor(private soundRepository: ISoundsRepository) {}
 
   async excuteSubmitSounds(data: ISoundRequestDTO[]) {
     const sound: Sound[] = [];
-    data.forEach(async (e) => {
-      const userExists = await this.soundRepository.findById(e.name);
-      if (userExists) {
-        throw new Error("Sound already exists!");
-      }
-    });
-
-    Object.assign(sound, []);
+    Object.assign(sound, data);
     this.soundRepository.save(sound);
+  }
+
+  async execurePlaySound(soundId: string) {
+    try {
+      this.soundRepository.play(soundId);
+    } catch (error) {
+      throw new Error("Error in playing sound!: " + error);
+    }
   }
 
   async execureGetSounds() {
     try {
-      return this.soundsList;
+      return this.soundRepository.getAll();
     } catch (error) {
-      throw new Error("Error in retruning sounds!");
+      throw new Error("Error in retriving sounds!");
     }
   }
 }

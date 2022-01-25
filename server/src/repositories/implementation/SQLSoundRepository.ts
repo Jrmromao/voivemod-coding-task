@@ -1,23 +1,49 @@
-import { User } from "../../entities/User";
 import { Sound } from "../../entities/Sound";
 import { ISoundsRepository } from "../ISoundRepository";
-
+import { sounds } from "../../data/database";
 export class SQLSoundsRepositiry implements ISoundsRepository {
-  private users: User[] = [];
+  constructor() {
+    this.sounds = sounds;
+  }
+
   private sounds: Sound[] = [];
 
-  async findById(name: string): Promise<Sound> {
+  save(soundList: Sound[]): Promise<void> {
     try {
-      const sound = this.sounds.find((sound) => sound.name === name);
-      return sound;
+      if (soundList) {
+        this.sounds.length = 0;
+        this.sounds = soundList;
+        return;
+      }
     } catch (error) {
       throw error;
     }
   }
 
-  async save(sound: Sound): Promise<void> {
+  play(soundId: string): Promise<void> {
     try {
-      this.sounds.push(sound);
+
+      console.log(this.sounds);
+      
+      const index = this.sounds.findIndex((s) => s.id === soundId);
+      this.sounds[index].price += 0.01;
+      return;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async findById(id: string): Promise<Sound> {
+    try {
+      const sound = this.sounds.find((sound) => sound.id === id);
+      return sound;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async findByName(name: string): Promise<Sound> {
+    try {
+      const sound = this.sounds.find((sound) => sound.name === name);
+      return sound;
     } catch (error) {
       throw error;
     }
@@ -32,5 +58,4 @@ export class SQLSoundsRepositiry implements ISoundsRepository {
       throw error;
     }
   }
-
 }
