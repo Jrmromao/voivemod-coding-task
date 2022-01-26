@@ -65,6 +65,7 @@ router.get("/api/sound/:id")
 - The whole application was developed using typescript
 - Using Cloudinary to store sounds associated with each image
 - The client could easily extendable, as it is also using a component driven architecture and Mobx as the state management.
+- Pre push hooks on the frondend app 
 
 
 ## License
