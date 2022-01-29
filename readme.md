@@ -7,6 +7,7 @@
 ## Tech Stack used
 - React JS
 - Node JS
+- Git
 
 ## Installation
 
