@@ -3,6 +3,8 @@ import agent from '../API/agents'
 import { ISound } from '../app/models/models'
 import { sounds } from '../data/database'
 
+
+// store to handle pastients operationns
 export default class PatientStore {
   title = 'Mobx store!'
 
